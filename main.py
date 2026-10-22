@@ -7,9 +7,9 @@ totalTime = 30.0
 numberOfSteps = int(totalTime / stepTime)
 
 speed = 0.5
-speedNoise = 0.03
+speedNoise = 0.05
 turningRate = 0.2
-turningNoise = 0.02
+turningNoise = 0.05
 rand = num.random.default_rng(42)
 
 x = 0.0 
@@ -58,10 +58,10 @@ positionRMSE = num.sqrt(num.mean(positionError**2))
 print("Final position error:", round(finalError, 2), "metres")
 print("position RMSE:", round(positionRMSE, 2), "metres")
 
-mpl.plot(trueXPosition, trueYPosition, label="Robot Path")
-mpl.plot(estimatedXPosition, estimatedYPosition, label="Estimated Path")
+mpl.plot(trueXPosition, trueYPosition, linewidth=2, label="Ground Truth Path")
+mpl.plot(estimatedXPosition, estimatedYPosition, "--", linewidth=2, color="red", label="Estimated Path")
 mpl.scatter(trueXPosition[0], trueYPosition[0], label="Start")
-mpl.scatter(trueXPosition[-1], trueYPosition[-1], label="Finish")
+mpl.scatter(trueXPosition[-1], trueYPosition[-1], color="red", label="Finish")
 
 mpl.xlabel("x position (metres)")
 mpl.ylabel("y position (metres)")
